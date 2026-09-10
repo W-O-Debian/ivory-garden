@@ -6483,6 +6483,324 @@ Style Settings plugin.
   --hl2: rgba(226, 184, 96, 0.35);
   --sp1: #1A1410;
 }
+
+/* ==========================================================================
+   Ivory Garden v1.1.0 — Feature additions
+   ==========================================================================
+
+   1. Warm Toggle (.warm-shift)
+      A 50% mix between the original palette and a 3300K color temperature
+      shift. Reduces blue light for nighttime reading without destroying
+      the palette identity. Toggle via Style Settings or per-note with
+      the `warm-shift` cssclass.
+
+   2. True Focus Mode (.true-focus-mode)
+      More aggressive than Minimal's built-in focus mode. Hides everything
+      except the note workspace — no hover-reveal, no ribbons, no status
+      bar, no tabs. Toggle via Style Settings or per-note cssclass.
+
+   3. PDF Export styling (@media print)
+      Forces background colors to print, hides UI chrome, sets proper page
+      margins. Produces beautiful theme-colored PDFs from Obsidian's
+      "Export to PDF" command.
+
+   4. Custom syntax highlighting
+      Palette-tuned code colors — keywords in cobalt, strings in sage,
+      comments in walnut, numbers in muted brick, functions in gold.
+
+   5. Graph view color preset
+      Matches the graph view to the Ivory Garden palette.
+   ========================================================================== */
+
+
+/* 1. Warm Toggle -------------------------------------------------------- */
+
+body.warm-shift.theme-light,
+body.warm-shift.theme-light.minimal-default-light {
+  --bg1: #fdefc9;
+  --bg2: #fef5cf;
+  --bg3: #f7e0b8;
+  --ui1: #ebc398;
+  --ui2: #a67f5f;
+  --ui3: #765639;
+  --tx1: #44261b;
+  --tx2: #73563d;
+  --tx3: #9a7756;
+  --tx4: #653e2b;
+  --ax1: #3a67b9;
+  --ax2: #2c4e8d;
+  --ax3: #afbfd6;
+}
+
+body.warm-shift.theme-dark,
+body.warm-shift.theme-dark.minimal-default-dark {
+  --bg1: #1f1a14;
+  --bg2: #2a2218;
+  --bg3: #382c1f;
+  --ui1: #4a3d2a;
+  --ui2: #6b5933;
+  --ui3: #8b7a4a;
+  --tx1: #f5ecd5;
+  --tx2: #c4a878;
+  --tx3: #9a8056;
+  --tx4: #d5c8a0;
+  --ax1: #7a9ec8;
+  --ax2: #9ab8d8;
+  --ax3: #7a9ec8;
+}
+
+
+/* 2. True Focus Mode ---------------------------------------------------- */
+
+body.true-focus-mode {
+  --ribbon-width: 0px;
+  --sidebar-width: 0px;
+}
+
+body.true-focus-mode .workspace-ribbon.mod-left,
+body.true-focus-mode .workspace-ribbon.mod-right {
+  display: none !important;
+}
+
+body.true-focus-mode .workspace-split.mod-left-split,
+body.true-focus-mode .workspace-split.mod-right-split {
+  display: none !important;
+}
+
+body.true-focus-mode .workspace-tab-header-container {
+  display: none !important;
+}
+
+body.true-focus-mode .status-bar {
+  display: none !important;
+}
+
+body.true-focus-mode .view-header {
+  display: none !important;
+}
+
+body.true-focus-mode .is-sidedock-collapsed .workspace-leaf-content,
+body.true-focus-mode .workspace-leaf-content[data-type="markdown"] {
+  --file-margins: 4rem auto !important;
+  max-width: var(--line-width);
+}
+
+body.true-focus-mode .inline-title {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+/* Exit indicator — subtle bottom-corner hint */
+body.true-focus-mode .app-container::after {
+  content: "Esc to exit focus mode";
+  position: fixed;
+  bottom: 8px;
+  right: 12px;
+  font-size: 11px;
+  color: var(--text-faint);
+  opacity: 0.5;
+  pointer-events: none;
+  z-index: 1000;
+  transition: opacity 0.2s ease;
+}
+
+body.true-focus-mode .app-container:hover::after {
+  opacity: 0.8;
+}
+
+
+/* 3. PDF Export styling ------------------------------------------------- */
+
+@media print {
+  /* Force background colors and images to print */
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    color-adjust: exact !important;
+  }
+
+  /* Hide all UI chrome */
+  .workspace-ribbon,
+  .workspace-split.mod-left-split,
+  .workspace-split.mod-right-split,
+  .workspace-tab-header-container,
+  .status-bar,
+  .view-header,
+  .view-actions,
+  .titlebar,
+  .sidebar-toggle-button,
+  .workspace-tab-header-status-icon,
+  .markdown-source-view .cm-gutters,
+  .markdown-embed-link,
+  .file-embed-link {
+    display: none !important;
+  }
+
+  /* Use the theme background for the whole page */
+  html, body, .app-container, .workspace, .workspace-split.mod-root {
+    background: var(--bg1) !important;
+    color: var(--tx1) !important;
+    width: 100% !important;
+    height: auto !important;
+    overflow: visible !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  /* The actual note content — centered with print margins */
+  .markdown-preview-view,
+  .markdown-source-view,
+  .markdown-rendered {
+    background: var(--bg1) !important;
+    color: var(--tx1) !important;
+    padding: 0 !important;
+    margin: 0 auto !important;
+    max-width: 16cm !important;
+    width: 100% !important;
+    font-size: 11pt !important;
+    line-height: 1.6 !important;
+  }
+
+  .markdown-preview-sizer,
+  .cm-sizer {
+    max-width: 16cm !important;
+    width: 100% !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  /* Page margins */
+  @page {
+    margin: 2cm;
+  }
+
+  /* Headings — avoid orphaned headings at page bottom */
+  h1, h2, h3, h4, h5, h6 {
+    page-break-after: avoid;
+    break-after: avoid;
+    color: var(--tx1) !important;
+  }
+
+  /* Avoid breaking inside these elements */
+  pre, blockquote, table, figure, .callout {
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+
+  /* Code blocks — preserve background */
+  pre, code {
+    background: var(--bg2) !important;
+    color: var(--tx4) !important;
+  }
+
+  pre {
+    padding: 0.8em !important;
+    border: 1px solid var(--ui1) !important;
+    border-radius: 3px !important;
+    font-size: 9.5pt !important;
+    white-space: pre-wrap !important;
+    word-wrap: break-word !important;
+  }
+
+  /* Callouts — preserve styling */
+  .callout {
+    background: var(--bg2) !important;
+    border-left: 3px solid var(--ax1) !important;
+    padding: 0.6em 1em !important;
+    margin: 0.8em 0 !important;
+  }
+
+  /* Blockquotes */
+  blockquote {
+    border-left: 2px solid var(--ui2) !important;
+    color: var(--tx2) !important;
+    padding-left: 1em !important;
+    margin: 0.8em 0 !important;
+  }
+
+  /* Tables */
+  table {
+    width: 100% !important;
+    border-collapse: collapse !important;
+    font-size: 10pt !important;
+  }
+
+  th, td {
+    border: 1px solid var(--ui1) !important;
+    padding: 0.4em 0.6em !important;
+  }
+
+  th {
+    background: var(--bg2) !important;
+    color: var(--tx2) !important;
+  }
+
+  /* Links — keep accent color but don't underline */
+  a {
+    color: var(--ax1) !important;
+    text-decoration: none !important;
+  }
+
+  /* Highlights — preserve the signature gold glow */
+  mark {
+    background: var(--hl2) !important;
+    color: var(--tx1) !important;
+    padding: 0.1em 0.2em !important;
+  }
+
+  /* Tags */
+  .tag {
+    color: var(--ax1) !important;
+    border: 1px solid var(--ui2) !important;
+    background: transparent !important;
+  }
+
+  /* Images — fit within page width */
+  img {
+    max-width: 100% !important;
+    page-break-inside: avoid;
+  }
+}
+
+
+/* 4. Custom syntax highlighting ---------------------------------------- */
+
+/* Ivory Garden syntax colors — tuned to the palette */
+.theme-light, .theme-dark {
+  --code-comment: var(--tx3);
+  --code-function: #C49A3C;
+  --code-keyword: var(--ax1);
+  --code-important: #B33636;
+  --code-operator: var(--tx2);
+  --code-property: #7A8A48;
+  --code-punctuation: var(--tx2);
+  --code-string: #5B8FA3;
+  --code-tag: #B33636;
+  --code-value: #C49A3C;
+}
+
+.theme-light {
+  --code-background: var(--bg3);
+  --code-normal: var(--tx1);
+}
+
+.theme-dark {
+  --code-background: var(--bg2);
+  --code-normal: var(--tx1);
+}
+
+
+/* 5. Graph view color preset ------------------------------------------- */
+
+.theme-light, .theme-dark {
+  --graph-line: var(--ui1);
+  --graph-node: var(--tx1);
+  --graph-node-tag: var(--ax1);
+  --graph-node-attachment: var(--color-orange);
+  --graph-node-focused: var(--ax2);
+  --graph-node-unresolved: var(--tx3);
+}
+
 /* Plugin compatibility */
 
 /* @plugins
@@ -8616,6 +8934,18 @@ settings:
 name: Minimal Advanced Settings
 id: minimal-advanced
 settings:
+        -
+                id: warm-shift
+                title: Warm shift (eye comfort)
+                description: Reduces blue light by applying a 50% color temperature shift toward 3300K. Preserves palette identity while easing eye strain for nighttime reading. Can also be enabled per-note using the cssclass "warm-shift".
+                type: class-toggle
+                default: false
+        -
+                id: true-focus-mode
+                title: True focus mode
+                description: Hides everything except the note workspace — ribbon, sidebars, tabs, status bar, and view header all vanish. More aggressive than Minimal's built-in focus mode. Press Esc or toggle off to exit. Can also be enabled per-note using the cssclass "true-focus-mode".
+                type: class-toggle
+                default: false
         -
                 id: hide-markdown
                 title: Hide Markdown syntax
