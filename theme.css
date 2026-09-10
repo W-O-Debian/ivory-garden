@@ -6488,69 +6488,26 @@ Style Settings plugin.
    Ivory Garden v1.1.0 — Feature additions
    ==========================================================================
 
-   1. Warm Toggle (.warm-shift)
-      A 50% mix between the original palette and a 3300K color temperature
-      shift. Reduces blue light for nighttime reading without destroying
-      the palette identity. Toggle via Style Settings or per-note with
-      the `warm-shift` cssclass.
-
-   2. True Focus Mode (.true-focus-mode)
+   1. True Focus Mode (.true-focus-mode)
       More aggressive than Minimal's built-in focus mode. Hides everything
       except the note workspace — no hover-reveal, no ribbons, no status
       bar, no tabs. Toggle via Style Settings or per-note cssclass.
 
-   3. PDF Export styling (@media print)
+   2. PDF Export styling (@media print)
       Forces background colors to print, hides UI chrome, sets proper page
       margins. Produces beautiful theme-colored PDFs from Obsidian's
       "Export to PDF" command.
 
-   4. Custom syntax highlighting
+   3. Custom syntax highlighting
       Palette-tuned code colors — keywords in cobalt, strings in sage,
       comments in walnut, numbers in muted brick, functions in gold.
 
-   5. Graph view color preset
+   4. Graph view color preset
       Matches the graph view to the Ivory Garden palette.
    ========================================================================== */
 
 
-/* 1. Warm Toggle -------------------------------------------------------- */
-
-body.warm-shift.theme-light,
-body.warm-shift.theme-light.minimal-default-light {
-  --bg1: #fdefc9;
-  --bg2: #fef5cf;
-  --bg3: #f7e0b8;
-  --ui1: #ebc398;
-  --ui2: #a67f5f;
-  --ui3: #765639;
-  --tx1: #44261b;
-  --tx2: #73563d;
-  --tx3: #9a7756;
-  --tx4: #653e2b;
-  --ax1: #3a67b9;
-  --ax2: #2c4e8d;
-  --ax3: #afbfd6;
-}
-
-body.warm-shift.theme-dark,
-body.warm-shift.theme-dark.minimal-default-dark {
-  --bg1: #1f1a14;
-  --bg2: #2a2218;
-  --bg3: #382c1f;
-  --ui1: #4a3d2a;
-  --ui2: #6b5933;
-  --ui3: #8b7a4a;
-  --tx1: #f5ecd5;
-  --tx2: #c4a878;
-  --tx3: #9a8056;
-  --tx4: #d5c8a0;
-  --ax1: #7a9ec8;
-  --ax2: #9ab8d8;
-  --ax3: #7a9ec8;
-}
-
-
-/* 2. True Focus Mode ---------------------------------------------------- */
+/* 1. True Focus Mode ---------------------------------------------------- */
 
 body.true-focus-mode {
   --ribbon-width: 0px;
@@ -6609,7 +6566,7 @@ body.true-focus-mode .app-container:hover::after {
 }
 
 
-/* 3. PDF Export styling ------------------------------------------------- */
+/* 2. PDF Export styling ------------------------------------------------- */
 
 @media print {
   /* Force background colors and images to print */
@@ -6763,7 +6720,7 @@ body.true-focus-mode .app-container:hover::after {
 }
 
 
-/* 4. Custom syntax highlighting ---------------------------------------- */
+/* 3. Custom syntax highlighting ---------------------------------------- */
 
 /* Ivory Garden syntax colors — tuned to the palette */
 .theme-light, .theme-dark {
@@ -6790,7 +6747,7 @@ body.true-focus-mode .app-container:hover::after {
 }
 
 
-/* 5. Graph view color preset ------------------------------------------- */
+/* 4. Graph view color preset ------------------------------------------- */
 
 .theme-light, .theme-dark {
   --graph-line: var(--ui1);
@@ -8934,12 +8891,6 @@ settings:
 name: Minimal Advanced Settings
 id: minimal-advanced
 settings:
-        -
-                id: warm-shift
-                title: Warm shift (eye comfort)
-                description: Reduces blue light by applying a 50% color temperature shift toward 3300K. Preserves palette identity while easing eye strain for nighttime reading. Can also be enabled per-note using the cssclass "warm-shift".
-                type: class-toggle
-                default: false
         -
                 id: true-focus-mode
                 title: True focus mode

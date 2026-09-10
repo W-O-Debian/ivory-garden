@@ -5,11 +5,17 @@ All notable changes to Ivory Garden will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.1.1] — 2026-09-10
+
+### Removed
+
+- **Warm Toggle** — removed the built-in warm color temperature shift. Eye comfort is better handled at the system level (macOS Night Shift, Windows Night Light, f.lux) where users can control it globally across all apps. The theme should focus on being a good theme, not on duplicating OS-level features.
+
 ## [1.1.0] — 2026-09-10
 
 ### Added
 
-- **Warm Toggle** — a 50% color temperature shift toward 3300K, reducing blue light for nighttime reading. Toggle via Style Settings → Advanced → "Warm shift (eye comfort)", or per-note using the `warm-shift` cssclass. Preserves palette identity while easing eye strain.
+
 - **True Focus Mode** — hides everything except the note workspace (ribbon, sidebars, tabs, status bar, view header). More aggressive than Minimal's built-in focus mode. Toggle via Style Settings → Advanced → "True focus mode", or per-note using the `true-focus-mode` cssclass. A subtle "Esc to exit focus mode" hint appears in the bottom-right corner.
 - **PDF Export styling** — `@media print` rules that force background colors to print, hide UI chrome, set proper page margins (2cm), prevent orphaned headings, and preserve callouts, code blocks, highlights, and tables. Obsidian's "Export to PDF" now produces beautiful theme-colored PDFs.
 - **Custom syntax highlighting** — palette-tuned code colors: keywords in cobalt blue, strings in dusty teal, comments in walnut, numbers/functions in muted gold, tags in muted brick.
