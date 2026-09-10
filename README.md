@@ -99,13 +99,6 @@ Because Ivory Garden is a Minimal recolour, you inherit the full Minimal feature
 - **Plugin compatibility** — Calendar, Charts, Dataview, Git, Kanban, Style Settings, Zoom, and more
 - **14 preset color schemes** — Dracula, Gruvbox, Nord, Solarized, Catppuccin, and more (Minimal's presets remain selectable for comparison)
 
-### New in v1.1.0
-
-- **True Focus Mode** — hides everything except the note workspace. More aggressive than Minimal's built-in focus mode. Toggle in Style Settings → Advanced → "True focus mode", or add `true-focus-mode` as a cssclass.
-- **PDF Export styling** — Obsidian's "Export to PDF" now produces beautiful theme-colored PDFs with proper page margins, preserved callouts, and the signature gold glow on highlights.
-- **Custom syntax highlighting** — code blocks now use palette-tuned colors (keywords in cobalt, strings in dusty teal, comments in walnut, functions in gold).
-- **Graph view preset** — the graph view now matches the Ivory Garden palette instead of using Obsidian's defaults.
-
 ## What changed from Minimal
 
 Only color values were changed. Specifically:

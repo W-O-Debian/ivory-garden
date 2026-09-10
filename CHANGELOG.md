@@ -5,26 +5,6 @@ All notable changes to Ivory Garden will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [1.1.1] — 2026-09-10
-
-### Removed
-
-- **Warm Toggle** — removed the built-in warm color temperature shift. Eye comfort is better handled at the system level (macOS Night Shift, Windows Night Light, f.lux) where users can control it globally across all apps. The theme should focus on being a good theme, not on duplicating OS-level features.
-
-## [1.1.0] — 2026-09-10
-
-### Added
-
-
-- **True Focus Mode** — hides everything except the note workspace (ribbon, sidebars, tabs, status bar, view header). More aggressive than Minimal's built-in focus mode. Toggle via Style Settings → Advanced → "True focus mode", or per-note using the `true-focus-mode` cssclass. A subtle "Esc to exit focus mode" hint appears in the bottom-right corner.
-- **PDF Export styling** — `@media print` rules that force background colors to print, hide UI chrome, set proper page margins (2cm), prevent orphaned headings, and preserve callouts, code blocks, highlights, and tables. Obsidian's "Export to PDF" now produces beautiful theme-colored PDFs.
-- **Custom syntax highlighting** — palette-tuned code colors: keywords in cobalt blue, strings in dusty teal, comments in walnut, numbers/functions in muted gold, tags in muted brick.
-- **Graph view color preset** — graph nodes, lines, tags, attachments, and unresolved links now match the Ivory Garden palette instead of Obsidian's defaults.
-
-### Changed
-
-- Updated header comment to document the new v1.1.0 features.
-
 ## [1.0.0] — 2026-09-05
 
 ### Added
@@ -34,7 +14,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Deep cocoa text (`#3E2723`) for reduced eye strain vs. pure black-on-white.
 - Cobalt blue accent (`#0B68DA`) for links and interactive elements.
 - Signature muted gold glow (`#C49A3C`) for text highlights — the palette's namesake.
-- **Midnight Garden** dark variant — espresso-black backgrounds with warm ivory text, lightened cobalt accent, and a brighter gold glow.
+- **Midnight Garden** dark variant — espresso-black backgrounds with warm ivory text, lightened cobalt accent, and brightened gold glow.
 - Extended palette harmonised with the garden aesthetic (muted brick red, sage green, dusty rose, etc.).
 - Explicit scheme classes `.minimal-ivory-garden-light` and `.minimal-ivory-garden-dark` for parity with Minimal's other named schemes.
 - Demo vault showcasing headings, callouts, tables, code blocks, task lists, and Dataview examples.
