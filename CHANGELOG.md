@@ -5,11 +5,17 @@ All notable changes to Ivory Garden will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.3.0] — 2026-09-18
+
+### Removed
+
+- **PDF Export styling** — removed the built-in `@media print` rules. They didn't work reliably across Obsidian's PDF export pipeline, and PDF styling is better handled by dedicated plugins (like "Export to PDF with Theme") rather than by the theme itself. Themes should provide colors, not functionality.
+
 ## [1.2.0] — 2026-09-11
+
 
 ### Added
 
-- **PDF Export styling** — Obsidian's "Export to PDF" now produces beautiful theme-colored PDFs with proper page margins, preserved callouts, and signature highlights.
 - **Custom syntax highlighting** — code blocks now use palette-tuned colors.
 - **Graph view color preset** — the graph view now matches the theme palette instead of using Obsidian's defaults.
 
@@ -30,7 +36,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 
 - **True Focus Mode** — hides everything except the note workspace (ribbon, sidebars, tabs, status bar, view header). More aggressive than Minimal's built-in focus mode. Toggle via Style Settings → Advanced → "True focus mode", or per-note using the `true-focus-mode` cssclass. A subtle "Esc to exit focus mode" hint appears in the bottom-right corner.
-- **PDF Export styling** — `@media print` rules that force background colors to print, hide UI chrome, set proper page margins (2cm), prevent orphaned headings, and preserve callouts, code blocks, highlights, and tables. Obsidian's "Export to PDF" now produces beautiful theme-colored PDFs.
 - **Custom syntax highlighting** — palette-tuned code colors: keywords in cobalt blue, strings in dusty teal, comments in walnut, numbers/functions in muted gold, tags in muted brick.
 - **Graph view color preset** — graph nodes, lines, tags, attachments, and unresolved links now match the Ivory Garden palette instead of Obsidian's defaults.
 
